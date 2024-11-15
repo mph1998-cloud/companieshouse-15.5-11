@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SearchBar from '../components/SearchBar.astro';
+import TaskCard from '../components/TaskCard.astro';
+
+// Fetch tasks from Google Sheets
+const tasks = [
+  {
+    task: "Fire Alarm Testing",
+    description: "Weekly testing of fire alarm system including all call points and sounders",
+    priority: "High",
+    frequency: "Weekly",
+    link: "https://www.gov.uk/workplace-fire-safety-your-responsibilities/fire-safety-equipment-drills-and-training",
+    company: "FireSafe Ltd"
+  },
+  {
+    task: "Fire Extinguisher Inspection",
+    description: "Annual inspection and certification of all fire extinguishers",
+    priority: "High",
+    frequency: "Annual",
+    link: "https://www.hse.gov.uk/toolbox/fire.htm",
+    company: "SafetyFirst Services"
+  },
+  {
+    task: "Emergency Lighting Test",
+    description: "Monthly functional test of emergency lighting systems",
+    priority: "Medium",
+    frequency: "Monthly",
+    link: "https://www.electricalsafetyfirst.org.uk/guidance/safety-around-the-home/emergency-lighting/",
+    company: "ElectricalPro"
+  }
+];
+---
+
+<Layout title="Fire Safety Compliance Tasks">
+  <main>
+    <section class="fire-safety">
+      <SearchBar placeholder="Search fire safety tasks..." />
+
+      <div class="task-grid">
+        {tasks.map(task => (
+          <TaskCard task={task} />
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1rem;
+    max-width: 1400px;
+  }
+
+  .fire-safety {
+    background: #1a1a1a;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+  }
+
+  .task-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  @media (min-width: 1024px) {
+    .task-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

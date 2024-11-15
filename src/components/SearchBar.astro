@@ -1,0 +1,44 @@
+---
+interface Props {
+  placeholder?: string;
+}
+
+const { placeholder = "Search tasks..." } = Astro.props;
+---
+
+<div class="search-bar">
+  <input type="text" placeholder={placeholder} />
+  <button>Search</button>
+</div>
+
+<style>
+  .search-bar {
+    display: flex;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+  }
+
+  .search-bar input {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: 1px solid #2d3748;
+    border-radius: 0.5rem;
+    background: #1a202c;
+    color: white;
+  }
+
+  .search-bar button {
+    padding: 0.8rem 1.5rem;
+    background: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .search-bar button:hover {
+    background: #4338ca;
+  }
+</style>
